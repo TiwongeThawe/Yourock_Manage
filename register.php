@@ -1,18 +1,3 @@
-<?php
-require 'config.php';
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-    $query = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
-    $stmt = $conn->prepare($query);
-    $stmt->execute(['name' => $name, 'email' => $email, 'password' => $password]);
-
-    echo "Registered successfully!";
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,3 +83,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
+
+<?php
+require 'config.php';
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+    $query = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
+    $stmt = $conn->prepare($query);
+    $stmt->execute(['name' => $name, 'email' => $email, 'password' => $password]);
+
+    echo "Registered successfully!";
+}
+?>
