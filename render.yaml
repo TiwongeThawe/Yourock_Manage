@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: yourock-password-manager
+    runtime: docker
+    repo: https://github.com/your-repo/php-app
+    branch: main
+    autoDeploy: true

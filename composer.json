@@ -1,0 +1,12 @@
+{
+    "name": "passx/yourockpassword-manager",
+    "description": "A secure password manager",
+    "require": {
+        "google/apiclient": "^2.14"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
