@@ -150,7 +150,7 @@ if (!isset($_SERVER['user_id'])){
             $("#generate").click(function () {
                 let length = $("#passwordLength").val() || 12;
 
-            $.get("https://password-generator-api.onrender.com/generate-password?length=" + length, function (data) {
+            $.get("https://yourock.onrender.com/generate-password" + length, function (data) {
                 $("#password").val(data.password);
                 });
             });
