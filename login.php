@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/login">Code9</a>
+            <a class="nav-link" href="code9.onrender.com">Code9</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="register.php">Sign Up</a>

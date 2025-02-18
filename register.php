@@ -18,10 +18,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link" href="login.php">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/signup">Code9</a>
+            <a class="nav-link" href="code9.onrender.com">Code9</a>
           </li>
         </ul>
       </div>
@@ -39,7 +39,7 @@
         <form id='reg' method="post" action="register.php">
           <div class="mb-3">
             <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" name="username" required>
+            <input type="text" class="form-control" id="name" name="username" required>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>

@@ -146,14 +146,6 @@ if (!isset($_SERVER['user_id'])){
                     $("#addPasswordModal").modal("hide");
                 });
             });
-
-            $("#generate").click(function () {
-                let length = $("#passwordLength").val() || 12;
-
-            $.get("https://yourock.onrender.com/generate-password" + length, function (data) {
-                $("#password").val(data.password);
-                });
-            });
         
             // Edit password
             $(document).on("click", ".edit-btn", function () {
