@@ -45,15 +45,15 @@
                     <form id="passwordForm">
                         <div class="mb-3">
                             <label class="form-label">Website</label>
-                            <input type="text" class="form-control" id="website" required>
+                            <input type="text" class="form-control" id="website" name="website" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" required>
+                            <input type="text" class="form-control" id="username" name="username" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" required>
+                            <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Save</button>
                     </form>
@@ -76,15 +76,15 @@
                     <input type="hidden" id="editId">
                     <div class="mb-3">
                         <label class="form-label">Website</label>
-                        <input type="text" class="form-control" id="editWebsite" required>
+                        <input type="text" class="form-control" id="editWebsite" name="website" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Username</label>
-                        <input type="text" class="form-control" id="editUsername" required>
+                        <input type="text" class="form-control" id="editUsername" name="username" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">New Password</label>
-                        <input type="password" class="form-control" id="editPassword" required>
+                        <input type="password" class="form-control" id="editPassword" name="password" required>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Save Changes</button>
                 </form>
