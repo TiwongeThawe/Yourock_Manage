@@ -1,3 +1,35 @@
+<?php
+require 'config.php';
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+    $query = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
+    $stmt = $conn->prepare($query);
+    if ($stmt->execute(['name' => $name, 'email' => $email, 'password' => $password])) {
+
+      //Get the newly registered user's ID
+      $user_id = $conn->lastInsertID();
+
+      //Session info
+      $_SESSION['user_id'] = $user_id;
+      $_SESSION['user_name'] = $name;
+      $_SESSION['user_email'] = $email;
+
+      //Dashboard redir
+      header("Location: dashboard.php");
+      exit();
+    } else {
+      echo "Error:Registration failed.";
+    }
+  
+
+    echo "Registered successfully!";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,35 +115,3 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
-
-<?php
-require 'config.php';
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-    $query = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
-    $stmt = $conn->prepare($query);
-    if ($stmt->execute(['name' => $name, 'email' => $email, 'password' => $password])) {
-
-      //Get the newly registered user's ID
-      $user_id = $conn->lastInsertID();
-
-      //Session info
-      $_SESSION['user_id'] = $user_id;
-      $_SESSION['user_name'] = $name;
-      $_SESSION['user_email'] = $email;
-
-      //Dashboard redir
-      header("Location: dashboard.php");
-      exit();
-    } else {
-      echo "Error:Registration failed.";
-    }
-  
-
-    echo "Registered successfully!";
-}
-?>
