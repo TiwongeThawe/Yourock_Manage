@@ -94,7 +94,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $query = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
     $stmt = $conn->prepare($query);
-    $stmt->execute(['name' => $name, 'email' => $email, 'password' => $password]);
+    if ($stmt->execute(['name' => $name, 'email' => $email, 'password' => $password])) {
+
+      //Get the newly registered user's ID
+      $user_id = $conn->lastInsertID();
+
+      //Session info
+      $_SESSION['user_id'] = $user_id;
+      $_SESSION['user_name'] = $name;
+      $_SESSION['user_email'] = $email;
+
+      //Dashboard redir
+      header("Location: dashboard.php");
+      exit();
+    } else {
+      echo "Error:Registration failed.";
+    }
+  
 
     echo "Registered successfully!";
 }
