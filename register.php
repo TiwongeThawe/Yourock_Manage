@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <a href="#" class="text-light mx-2"><i class="fab fa-twitter"></i></a>
         <a href="#" class="text-light mx-2"><i class="fab fa-linkedin"></i></a>
     </div>
-      <img src="dev-logo" alt="Developer Logo" class="developer-logo">
+      <img src="dev-logo.png" alt="Developer Logo" class="developer-logo">
   </div>
 </footer>
 </body>
