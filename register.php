@@ -39,6 +39,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    .footer .developer-logo {
+            opacity: 0.5;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 100px;
+        }
+  </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
