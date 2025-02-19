@@ -1,14 +1,15 @@
 <?php
-require_once "config.php";
+require_once "config.php"; // Ensure database connection is established
 
-$query = "SELECT id, website, username FROM passwords";
-$result = pg_query($conn, $query);
+try {
+    $query = "SELECT id, website, username FROM passwords";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
 
-$passwords = [];
+    $passwords = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-while ($row = pg_fetch_assoc($result)) {
-    $passwords[] = $row;
+    echo json_encode($passwords);
+} catch (PDOException $e) {
+    echo json_encode(["error" => "Database query failed: " . $e->getMessage()]);
 }
-
-echo json_encode($passwords);
 ?>
