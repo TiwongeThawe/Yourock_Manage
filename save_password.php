@@ -8,13 +8,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
     
     if ($website && $username && $password) {
-        // Hash password before storing
-        $hashed_password = password_hash($password, PASSWORD_ARGON2ID);
+        // encrypt password before storing
+        $encryptedPassword = openssl_encrypt($password, "aes-256-cbc", $key, 0, $iv);
+        $ivHex = bin2hex($iv); // Store IV for decryption
+
         
         // Insert into database
         $query = "INSERT INTO passwords (website, username, password) VALUES (:website, :username, :password)";
         $stmt = $conn->prepare($query);
-        $stmt->execute(['website' => $website, 'username' => $username, 'password' => $hashed_password]);
+        $stmt->execute(['website' => $website, 'username' => $username, 'password' => $encryptedPassword]);
         
         echo "Password saved successfully!";
     } else {
