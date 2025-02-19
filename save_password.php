@@ -1,6 +1,9 @@
 <?php
 require 'config.php';
 
+$key = "your-secret-key"; // Use a secure key
+$iv = openssl_random_pseudo_bytes(16);
+
 // Handle POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $website = $_POST['website'] ?? '';
@@ -14,9 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         
         // Insert into database
-        $query = "INSERT INTO passwords (website, username, password) VALUES (:website, :username, :password)";
+        $query = "INSERT INTO passwords (website, username, password, iv) VALUES (:website, :username, :password, :iv)";
         $stmt = $conn->prepare($query);
-        $stmt->execute(['website' => $website, 'username' => $username, 'password' => $encryptedPassword]);
+        $stmt->execute(['website' => $website, 'username' => $username, 'password' => $encryptedPassword, 'iv' => $ivHex]);
         
         echo "Password saved successfully!";
     } else {
