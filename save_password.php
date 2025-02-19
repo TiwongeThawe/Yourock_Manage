@@ -1,7 +1,7 @@
 <?php
 require 'config.php';
 
-$key = "your-secret-key"; // Use a secure key
+$key = getenv("SECRET_KEY"); // Use a secure key
 $iv = openssl_random_pseudo_bytes(16);
 
 // Handle POST request
