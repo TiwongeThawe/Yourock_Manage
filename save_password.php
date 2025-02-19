@@ -12,7 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $hashed_password = password_hash($password, PASSWORD_ARGON2ID);
         
         // Insert into database
-        $stmt = pdo->prepare("INSERT INTO passwords (website, username, password) VALUES (:website, :username, :password)");
+        $query = "INSERT INTO passwords (website, username, password) VALUES (:website, :username, :password)";
+        $stmt = $conn->prepare($query);
         $stmt->execute(['website' => $website, 'username' => $username, 'password' => $hashed_password]);
         
         echo "Password saved successfully!";
