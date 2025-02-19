@@ -108,6 +108,7 @@
                             <tr>
                                 <td>${pw.website}</td>
                                 <td>${pw.username}</td>
+                                <td>${pw.password}</td>
                                 <td>
                                     <button class="btn btn-sm btn-warning edit-btn" data-id="${pw.id}" data-website="${pw.website}" data-username="${pw.username}">
                                         <i class="fas fa-edit"></i> Edit
