@@ -1,5 +1,5 @@
 <?php
-require_once "/config.php";
+require_once "config.php";
 
 $query = "SELECT id, website, username FROM passwords";
 $result = pg_query($conn, $query);
