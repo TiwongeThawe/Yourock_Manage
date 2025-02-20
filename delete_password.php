@@ -2,15 +2,25 @@
 require_once "config.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST['id'];
+    if (isset($_POST['id']) && is_numeric($_POST['id'])) {
+        $id = $_POST['id'];
 
-    $query = "DELETE FROM passwords WHERE id = $1";
-    $result = pg_query_params($conn, $query, [$id]);
+        try {
+            $query = "DELETE FROM passwords WHERE id = :id";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
-    if ($result) {
-        echo "Password deleted successfully!";
+            if ($stmt->execute()) {
+                echo "Password deleted successfully!";
+            } else {
+                echo "Error: Unable to delete password.";
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
     } else {
-        echo "Error: " . pg_last_error($conn);
+        echo "Invalid ID provided.";
     }
 }
 ?>
+
