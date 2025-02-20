@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         try {
             $query = "DELETE FROM passwords WHERE id = :id";
-            $stmt = $pdo->prepare($query);
+            $stmt = $conn->prepare($query);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
             if ($stmt->execute()) {

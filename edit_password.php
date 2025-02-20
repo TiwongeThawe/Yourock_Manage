@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         try {
             $query = "UPDATE passwords SET website = :website, username = :username, password = :password WHERE id = :id";
-            $stmt = $pdo->prepare($query);
+            $stmt = $conn->prepare($query);
             $stmt->bindParam(':website', $website, PDO::PARAM_STR);
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
             $stmt->bindParam(':password', $password, PDO::PARAM_STR);
