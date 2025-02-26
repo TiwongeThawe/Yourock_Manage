@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $website = $_POST['website'] ?? '';
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
+    $user_id = $_SESSION['user_id'] ?? '';
     
     if ($website && $username && $password) {
         // encrypt password before storing
@@ -17,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         
         // Insert into database
-        $query = "INSERT INTO passwords (website, username, password, iv) VALUES (:website, :username, :password, :iv)";
+        $query = "INSERT INTO passwords (user_id, website, username, password, iv) VALUES (:user_id, :website, :username, :password, :iv)";
         $stmt = $conn->prepare($query);
         $stmt->execute(['website' => $website, 'username' => $username, 'password' => $encryptedPassword, 'iv' => $ivHex]);
         

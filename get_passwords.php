@@ -5,7 +5,7 @@ $key = getenv('SECRET_KEY'); // Same key as used in save_password.php
 
 
 try {
-    $query = "SELECT id, website, username, password, iv FROM passwords";
+    $query = "SELECT id, website, username, password, iv FROM passwords WHERE user_id = :user_id";
     $stmt = $conn->prepare($query);
     $stmt->execute();
 
